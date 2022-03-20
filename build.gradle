@@ -1,0 +1,32 @@
+plugins {
+    id 'org.jetbrains.intellij' version '1.4.0'
+    id 'org.jetbrains.kotlin.jvm' version '1.5.10'
+}
+
+group 'com.zsu'
+version '1.0-SNAPSHOT'
+
+repositories {
+    maven { url("https://maven.pkg.jetbrains.space/kotlin/p/kotlin/kotlin-ide-plugin-dependencies/") }
+    mavenCentral()
+}
+
+dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib"
+}
+
+// See https://github.com/JetBrains/gradle-intellij-plugin/
+intellij {
+    version = '2021.3.2'
+    plugins = ["com.intellij.java", "org.jetbrains.kotlin",
+               "android"]
+}
+
+sourceSets.main {
+    java.srcDirs("src/main")
+}
+patchPluginXml {
+    changeNotes = """
+      Add change notes here.<br>
+      <em>most HTML tags may be used</em>"""
+}
